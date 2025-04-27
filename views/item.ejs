@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html>
+<%- include('chunks/head.ejs') %>
+<body>
+  <%- include('chunks/navbar.ejs') %>
+
+	<div class="container-fluid p-2">
+    <div class="">
+      <a class="btn btn-lg" href="/home"><span class="fa fa-backward"></span> Back to All listings</a>
+    </div>
+    <div class="container-fluid row justify-content-center p-5 m-0">
+      <div class="card w-75 p-0">
+        <img src="<%= item.imageURL %>" class="card-img-top" alt="<%= item.name %>: <%= item.description %>">
+        <div class="card-body pb-1">
+          <h2 class="card-title text-center display-4"><%= item.name %></h2>
+          <h4 class="card-text"><%= item.description %></h4>
+          <p class="card-text display-6">Price: $<%= item.price %><%= item.rental ? '/month' : '' %></p>
+          <a
+            href="https://buy.stripe.com/7sIdR5guCcee7PW4gg" 
+            class="btn btn-lg btn-outline-success"
+          >
+            <i class="fa fa-credit-card"></i> Buy
+          </a>
+          <p class="card-text"><small class="text-body-secondary"><%= item.rental ? 'Rental' : 'Outright Purchase' %> from <%= owner.name %> for Home at: <%= item.address %></small></p>
+        </div>
+        <iframe width="100%" height="650px" frameborder="0" style="border:0" src="https://www.google.com/maps/embed/v1/place?key=AIzaSyB2NIWI3Tv9iDPrlnowr_0ZqZWoAQydKJU&q=<%= item.address %>&maptype=satellite" allowfullscreen></iframe>
+      </div>
+    </div>
+  </div>
+
+	<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.5/dist/js/bootstrap.bundle.min.js" integrity="sha384-k6d4wzSIapyDyv1kpU366/PK5hCdSbCRGRCMv+eplOQJWyd1fbcAu9OCUj5zNLiq" crossorigin="anonymous"></script>
+</body>
+</html>
